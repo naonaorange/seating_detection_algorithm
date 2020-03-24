@@ -43,7 +43,7 @@ if __name__ == '__main__':
                 rssi = rssi * (-1) / 128
                 #print(rssi)
                 result = model.predict(rssi)
-                print(result)
+                print(result[0][1])
 
         except Exception as e:
             print(e.message)
