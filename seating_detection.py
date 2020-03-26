@@ -29,9 +29,9 @@ if __name__ == '__main__':
         ser.stopbits = serial.STOPBITS_ONE
         ser.timeout = 5
 
-        try:
-            while(True):
-                rssi = []
+        while(True):
+            rssi = []
+            try:
                 for i in range(100):
                     data = ser.readline()
                     r = data.strip().decode('utf-8')    #バイト型を文字列変数に変換
@@ -45,6 +45,5 @@ if __name__ == '__main__':
                 result = model.predict(rssi)
                 print(result[0][1])
 
-        except Exception as e:
-            print(e.message)
-            pass
+            except Exception as e:
+                pass

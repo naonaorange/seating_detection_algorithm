@@ -27,17 +27,16 @@ if __name__ == '__main__':
         ser.timeout = 5
 
         with open(LOG_PATH, mode='w') as f:
-            try:
                 while(True):
-                    f.write(str(CATEGORY_NO) + ',')
-                    for i in range(100):
-                        data = ser.readline()
-                        rssi = data.strip().decode('utf-8')    #バイト型を文字列変数に変換
-                        rssi = int(rssi) * -1
-                        print(rssi)
-                        f.write(str(rssi) + ',')
-                    f.write('\n')
+                    try:
+                        f.write(str(CATEGORY_NO) + ',')
+                        for i in range(100):
+                            data = ser.readline()
+                            rssi = data.strip().decode('utf-8')    #バイト型を文字列変数に変換
+                            rssi = int(rssi) * -1
+                            print(rssi)
+                            f.write(str(rssi) + ',')
+                        f.write('\n')
 
-            except Exception as e:
-                print(e.message)
-                pass
+                    except Exception as e:
+                        pass
